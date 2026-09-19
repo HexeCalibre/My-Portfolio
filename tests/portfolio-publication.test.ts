@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { getPublishedProjects, isPubliclyPublishable } from "../src/features/portfolio/publication";
-import type { PortfolioProject } from "../src/features/portfolio/types";
+import { getPublishedProjects, isPubliclyPublishable } from "../src/features/portfolio/publication.ts";
+import type { PortfolioProject } from "../src/features/portfolio/types.ts";
 
 const base: PortfolioProject = {
   id: "test",
