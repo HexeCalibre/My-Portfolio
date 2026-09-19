@@ -1,6 +1,8 @@
 name: Verify Foundation
 
 on:
+  push:
+    branches: [foundation/wbs-3.3]
   pull_request:
     branches: [master]
   workflow_dispatch:
@@ -20,6 +22,8 @@ jobs:
           cache: npm
       - name: Install locked dependencies
         run: npm ci --no-audit --no-fund
+      - name: Test
+        run: npm test
       - name: Typecheck
         run: npm run typecheck
       - name: Lint
