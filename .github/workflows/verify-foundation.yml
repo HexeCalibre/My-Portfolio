@@ -2,7 +2,7 @@ name: Verify Foundation
 
 on:
   push:
-    branches: [foundation/wbs-3.3]
+    branches: [foundation/wbs-3.4]
   pull_request:
     branches: [master]
   workflow_dispatch:
