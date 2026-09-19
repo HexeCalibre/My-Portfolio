@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 
   /* Typography */
   --font-sans: Arial, Helvetica, sans-serif;
@@ -33,7 +33,30 @@
   --radius-lg: 1rem;
   --radius-full: 9999px;
 
-  /* Semantic color tokens: light baseline. WBS 3.5 adds theme overrides. */
+  /* Semantic color tokens: dark is the application default. */
+  --color-background: #020617;
+  --color-surface: #0f172a;
+  --color-surface-raised: #1e293b;
+  --color-foreground: #f8fafc;
+  --color-muted: #cbd5e1;
+  --color-border: #475569;
+  --color-accent: #38bdf8;
+  --color-accent-foreground: #082f49;
+  --color-success: #4ade80;
+  --color-warning: #fbbf24;
+  --color-danger: #f87171;
+  --color-focus: #7dd3fc;
+
+  /* Elevation and motion */
+  --shadow-sm: 0 1px 2px rgb(15 23 42 / 0.08);
+  --shadow-md: 0 8px 24px rgb(15 23 42 / 0.12);
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+}
+
+/* Explicit light theme. Theme switching UI is introduced with the component layer. */
+[data-theme="light"] {
+  color-scheme: light;
   --color-background: #ffffff;
   --color-surface: #f8fafc;
   --color-surface-raised: #ffffff;
@@ -46,12 +69,19 @@
   --color-warning: #92400e;
   --color-danger: #b91c1c;
   --color-focus: #0369a1;
-
-  /* Elevation and motion */
   --shadow-sm: 0 1px 2px rgb(15 23 42 / 0.08);
   --shadow-md: 0 8px 24px rgb(15 23 42 / 0.12);
-  --duration-fast: 150ms;
-  --duration-normal: 250ms;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+  }
 }
 
 @theme inline {
