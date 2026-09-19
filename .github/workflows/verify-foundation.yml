@@ -20,6 +20,8 @@ jobs:
           cache: npm
       - name: Install locked dependencies
         run: npm ci --no-audit --no-fund
+      - name: Test
+        run: npm test
       - name: Typecheck
         run: npm run typecheck
       - name: Lint
