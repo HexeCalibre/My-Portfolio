@@ -2,7 +2,7 @@ import { Badge, Button, Card, Container, Section } from "@/components/ui";
 
 export default function Home() {
   return (
-    <main className="min-h-screen py-8 sm:py-10 lg:py-12">
+    <main id="main-content" tabIndex={-1} className="min-h-screen py-8 sm:py-10 lg:py-12">
       <Container>
         <header className="max-w-[var(--layout-reading)]">
           <Badge>Cybersecurity · Engineering · DFIR</Badge>
