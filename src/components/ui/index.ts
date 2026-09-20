@@ -5,3 +5,4 @@ export { Card } from "./card";
 export { Container } from "./container";
 export type { ContainerProps } from "./container";
 export { Section } from "./section";
+export { SkipLink } from "./skip-link";
