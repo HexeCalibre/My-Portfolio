@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SkipLink } from "@/components/ui";
+import { SiteFooter, SiteHeader, SkipLink } from "@/components/ui";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -14,7 +14,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <SkipLink />
+        <SiteHeader />
         {children}
+        <SiteFooter />
       </body>
     </html>
   );
