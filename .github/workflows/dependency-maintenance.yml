@@ -1,0 +1,78 @@
+name: Dependency Maintenance
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_branch:
+        description: Existing maintenance branch to update
+        required: true
+        default: chore/ci-warning-cleanup
+      next_version:
+        description: Exact Next.js version
+        required: true
+        default: 16.3.5
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Validate inputs
+        shell: bash
+        run: |
+          case "${{ inputs.target_branch }}" in
+            chore/*|fix/*) ;;
+            *) echo "Refusing non-maintenance branch: ${{ inputs.target_branch }}"; exit 1 ;;
+          esac
+          [[ "${{ inputs.next_version }}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || {
+            echo "next_version must be an exact semver"; exit 1;
+          }
+
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ inputs.target_branch }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Update framework dependencies and lockfile
+        run: |
+          npm install --save-exact "next@${{ inputs.next_version }}"
+          npm install --save-dev --save-exact "eslint-config-next@${{ inputs.next_version }}"
+
+      - name: Verify resolved dependency tree
+        run: npm ls next eslint eslint-config-next
+
+      - name: Security audit
+        run: npm audit --audit-level=high
+
+      - name: Test
+        run: npm test
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Commit verified dependency update
+        shell: bash
+        run: |
+          if git diff --quiet -- package.json package-lock.json; then
+            echo "No dependency changes detected."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json package-lock.json
+          git commit -m "chore: update Next.js security baseline to ${{ inputs.next_version }}"
+          git push origin "HEAD:${{ inputs.target_branch }}"
