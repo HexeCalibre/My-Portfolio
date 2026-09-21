@@ -37,6 +37,61 @@ export default function Home() {
 
       <Container>
         <Section
+          title="Project Phoenix"
+          description="Enterprise cybersecurity transformation work presented at executive level, with operational evidence deliberately sanitized for public use."
+        >
+          <Card>
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(16rem,0.65fr)] lg:items-start">
+              <div>
+                <div className="flex flex-wrap gap-2">
+                  <Badge>Production / Professional</Badge>
+                  <Badge>Cybersecurity transformation</Badge>
+                </div>
+                <h3 className="mt-5 text-2xl font-semibold text-foreground sm:text-3xl">
+                  Building a controlled cybersecurity foundation from real infrastructure evidence
+                </h3>
+                <p className="mt-4 max-w-[var(--layout-reading)] leading-relaxed text-muted">
+                  Project Phoenix is an enterprise cybersecurity transformation initiative supported by controlled project planning and infrastructure-discovery evidence. The work includes documenting and validating network relationships so security decisions can be based on a defensible operational baseline rather than assumptions.
+                </p>
+                <p className="mt-4 max-w-[var(--layout-reading)] leading-relaxed text-muted">
+                  Public portfolio evidence is intentionally limited to the method, governance, and security outcomes. Device identifiers, physical locations, topology details, internal labels, and other sensitive operational data remain excluded.
+                </p>
+                <div className="mt-6">
+                  <Link
+                    href="/projects"
+                    className="inline-flex min-h-11 items-center justify-center rounded-md border border-border bg-surface px-5 py-3 text-sm font-semibold text-foreground hover:bg-surface-raised"
+                  >
+                    Explore project evidence
+                  </Link>
+                </div>
+              </div>
+
+              <aside className="rounded-lg border border-border bg-surface-raised p-5" aria-label="Project Phoenix evidence summary">
+                <p className="text-sm font-semibold uppercase tracking-wide text-muted">Evidence snapshot</p>
+                <dl className="mt-4 space-y-4">
+                  <div>
+                    <dt className="text-sm text-muted">Context</dt>
+                    <dd className="mt-1 font-semibold text-foreground">Production / Professional</dd>
+                  </div>
+                  <div>
+                    <dt className="text-sm text-muted">Focus</dt>
+                    <dd className="mt-1 font-semibold text-foreground">Cybersecurity foundation & infrastructure discovery</dd>
+                  </div>
+                  <div>
+                    <dt className="text-sm text-muted">Evidence</dt>
+                    <dd className="mt-1 font-semibold text-foreground">Controlled project plan & verified mapping records</dd>
+                  </div>
+                  <div>
+                    <dt className="text-sm text-muted">Disclosure</dt>
+                    <dd className="mt-1 font-semibold text-foreground">Sanitized for public portfolio use</dd>
+                  </div>
+                </dl>
+              </aside>
+            </div>
+          </Card>
+        </Section>
+
+        <Section
           title="Portfolio foundation"
           description="The homepage hierarchy is being implemented incrementally from the approved UX baseline."
         >
