@@ -1,0 +1,47 @@
+name: Dependency Remediation
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  remediate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: chore/ci-warning-cleanup
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - name: Upgrade security-sensitive dependencies
+        run: |
+          npm install --save-exact next@16.3.5
+          npm install --save-dev --save-exact eslint-config-next@16.3.5
+      - name: Verify dependency tree
+        run: npm ls next eslint eslint-config-next
+      - name: Security audit
+        run: npm audit --audit-level=high
+      - name: Test
+        run: npm test
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Lint
+        run: npm run lint
+      - name: Build
+        run: npm run build
+      - name: Commit regenerated lockfile
+        run: |
+          if git diff --quiet -- package.json package-lock.json; then
+            echo "No dependency changes detected."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json package-lock.json
+          git commit -m "chore: remediate Next.js dependency baseline"
+          git push origin HEAD:chore/ci-warning-cleanup
