@@ -92,6 +92,45 @@ export default function Home() {
         </Section>
 
         <Section
+          title="Proof of Impact"
+          description="Evidence-backed indicators from Project Phoenix. Counts describe the controlled assessment register, not unsupported claims of risk reduction or remediation."
+        >
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <Card>
+              <p className="text-3xl font-semibold text-foreground">112</p>
+              <h3 className="mt-3 text-lg font-semibold text-foreground">Findings registered</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">
+                Technical findings and observations consolidated into a controlled vendor-facing risk register.
+              </p>
+            </Card>
+            <Card>
+              <p className="text-3xl font-semibold text-foreground">14</p>
+              <h3 className="mt-3 text-lg font-semibold text-foreground">Critical / potential critical</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">
+                Preliminary priority classifications requiring evidence-based validation before final risk acceptance.
+              </p>
+            </Card>
+            <Card>
+              <p className="text-3xl font-semibold text-foreground">63</p>
+              <h3 className="mt-3 text-lg font-semibold text-foreground">High / potential high</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">
+                Higher-priority items surfaced for technical explanation, corrective action, ownership, and closure evidence.
+              </p>
+            </Card>
+            <Card>
+              <p className="text-3xl font-semibold text-foreground">33</p>
+              <h3 className="mt-3 text-lg font-semibold text-foreground">TBV classifications</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">
+                Items explicitly marked To Be Verified so uncertainty is preserved instead of being presented as confirmed fact.
+              </p>
+            </Card>
+          </div>
+          <p className="mt-5 text-sm leading-relaxed text-muted">
+            Project Phoenix records 103 open items in the current controlled summary. Critical and high classifications are preliminary and are recalibrated as contractual scope, technical evidence, likelihood, and business impact are validated. Sensitive finding details remain private.
+          </p>
+        </Section>
+
+        <Section
           title="Portfolio foundation"
           description="The homepage hierarchy is being implemented incrementally from the approved UX baseline."
         >
