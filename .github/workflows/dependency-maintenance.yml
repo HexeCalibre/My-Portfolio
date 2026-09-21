@@ -11,10 +11,6 @@ on:
         description: Exact Next.js version
         required: true
         default: 16.3.5
-      eslint_version:
-        description: Exact supported ESLint version
-        required: true
-        default: 10.11.0
 
 permissions:
   contents: write
@@ -34,9 +30,6 @@ jobs:
           [[ "${{ inputs.next_version }}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || {
             echo "next_version must be an exact semver"; exit 1;
           }
-          [[ "${{ inputs.eslint_version }}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || {
-            echo "eslint_version must be an exact semver"; exit 1;
-          }
 
       - uses: actions/checkout@v5
         with:
@@ -48,14 +41,17 @@ jobs:
           node-version: 24
           cache: npm
 
-      - name: Update supported dependency baseline and lockfile
+      - name: Update compatible dependency baseline and lockfile
         run: |
           npm pkg set type=module
           npm install --save-exact "next@${{ inputs.next_version }}"
-          npm install --save-dev --save-exact "eslint-config-next@${{ inputs.next_version }}" "eslint@${{ inputs.eslint_version }}"
+          npm install --save-dev --save-exact "eslint-config-next@${{ inputs.next_version }}" "eslint@9.39.5"
 
       - name: Verify resolved dependency tree
         run: npm ls next eslint eslint-config-next
+
+      - name: Review install scripts
+        run: npm install-scripts ls || true
 
       - name: Security audit
         run: npm audit --audit-level=high
@@ -82,5 +78,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add package.json package-lock.json
-          git commit -m "chore: update supported dependency baseline"
+          git commit -m "chore: finalize compatible security dependency baseline"
           git push origin "HEAD:${{ inputs.target_branch }}"
