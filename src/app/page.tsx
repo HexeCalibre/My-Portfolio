@@ -131,25 +131,57 @@ export default function Home() {
         </Section>
 
         <Section
-          title="Portfolio foundation"
-          description="The homepage hierarchy is being implemented incrementally from the approved UX baseline."
+          title="Featured Projects"
+          description="Selected work with explicit context so professional delivery, independent engineering, and future lab evidence are not conflated."
         >
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-4 lg:grid-cols-2">
             <Card>
-              <Badge>Independent project</Badge>
-              <h3 className="mt-4 text-xl font-semibold text-foreground">Cybersecurity Portfolio</h3>
-              <p className="mt-2 text-muted">
-                Full-stack portfolio engineering with controlled architecture, security, verification, and delivery evidence.
+              <div className="flex flex-wrap gap-2">
+                <Badge>Production / Professional</Badge>
+                <Badge>Flagship</Badge>
+              </div>
+              <h3 className="mt-4 text-xl font-semibold text-foreground">Project Phoenix</h3>
+              <p className="mt-2 leading-relaxed text-muted">
+                Enterprise cybersecurity transformation work grounded in controlled planning, infrastructure discovery, risk documentation, and evidence-aware security decision making.
               </p>
+              <p className="mt-4 text-sm leading-relaxed text-muted">
+                Public presentation is sanitized: sensitive infrastructure, device, topology, location, and finding details remain private.
+              </p>
+              <div className="mt-5">
+                <Link
+                  href="/projects"
+                  className="inline-flex min-h-11 items-center text-sm font-semibold text-foreground underline decoration-border underline-offset-4 hover:decoration-foreground"
+                >
+                  View project evidence
+                </Link>
+              </div>
             </Card>
+
             <Card>
-              <Badge>Design system</Badge>
-              <h3 className="mt-4 text-xl font-semibold text-foreground">Reusable UI foundation</h3>
-              <p className="mt-2 text-muted">
-                Semantic tokens, responsive layout primitives, accessible interaction foundations, and shared site chrome.
+              <div className="flex flex-wrap gap-2">
+                <Badge>Independent Project</Badge>
+                <Badge>Secure software delivery</Badge>
+              </div>
+              <h3 className="mt-4 text-xl font-semibold text-foreground">Cybersecurity Portfolio</h3>
+              <p className="mt-2 leading-relaxed text-muted">
+                A full-stack portfolio engineered with controlled requirements, architecture, threat modeling, evidence handling, CI verification, dependency vulnerability management, and documented delivery gates.
               </p>
+              <p className="mt-4 text-sm leading-relaxed text-muted">
+                The project itself is evidence of applying secure SDLC and project-control practices rather than presenting planned controls as already deployed.
+              </p>
+              <div className="mt-5">
+                <Link
+                  href="/projects"
+                  className="inline-flex min-h-11 items-center text-sm font-semibold text-foreground underline decoration-border underline-offset-4 hover:decoration-foreground"
+                >
+                  Explore project details
+                </Link>
+              </div>
             </Card>
           </div>
+          <p className="mt-5 text-sm leading-relaxed text-muted">
+            Additional personal/test-lab and guided hands-on work will appear only after its evidence and context classification are validated for publication.
+          </p>
         </Section>
       </Container>
     </main>
