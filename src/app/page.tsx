@@ -131,24 +131,46 @@ export default function Home() {
         </Section>
 
         <Section
-          title="Portfolio foundation"
-          description="The homepage hierarchy is being implemented incrementally from the approved UX baseline."
+          title="Featured Projects"
+          description="Selected work with explicit context so professional delivery and independent engineering are not conflated."
         >
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-4 lg:grid-cols-2">
             <Card>
-              <Badge>Independent project</Badge>
+              <div className="flex flex-wrap gap-2">
+                <Badge>Production / Professional</Badge>
+                <Badge>Cybersecurity transformation</Badge>
+              </div>
+              <h3 className="mt-4 text-xl font-semibold text-foreground">Project Phoenix</h3>
+              <p className="mt-2 leading-relaxed text-muted">
+                Enterprise cybersecurity transformation work grounded in controlled planning, infrastructure discovery, risk registration, and evidence validation. Public details are sanitized to protect operational information.
+              </p>
+              <p className="mt-4 text-sm font-medium text-foreground">
+                Focus: governance · infrastructure evidence · risk assessment
+              </p>
+            </Card>
+
+            <Card>
+              <div className="flex flex-wrap gap-2">
+                <Badge>Independent Project</Badge>
+                <Badge>Secure delivery</Badge>
+              </div>
               <h3 className="mt-4 text-xl font-semibold text-foreground">Cybersecurity Portfolio</h3>
-              <p className="mt-2 text-muted">
-                Full-stack portfolio engineering with controlled architecture, security, verification, and delivery evidence.
+              <p className="mt-2 leading-relaxed text-muted">
+                Full-stack portfolio engineering using controlled requirements, architecture, CI verification, dependency review, and evidence-based delivery rather than treating the site as a simple static profile.
+              </p>
+              <p className="mt-4 text-sm font-medium text-foreground">
+                Focus: Next.js · TypeScript · security engineering · delivery governance
               </p>
             </Card>
-            <Card>
-              <Badge>Design system</Badge>
-              <h3 className="mt-4 text-xl font-semibold text-foreground">Reusable UI foundation</h3>
-              <p className="mt-2 text-muted">
-                Semantic tokens, responsive layout primitives, accessible interaction foundations, and shared site chrome.
-              </p>
-            </Card>
+          </div>
+
+          <div className="mt-6">
+            <Link
+              href="/projects"
+              className="inline-flex min-h-11 items-center justify-center rounded-md border border-border bg-surface px-5 py-3 text-sm font-semibold text-foreground hover:bg-surface-raised"
+            >
+              View all projects
+            </Link>
           </div>
         </Section>
       </Container>
